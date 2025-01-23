@@ -21,6 +21,7 @@ int main()
                 C[i]=0;
             }
         }
+        printf("hihihihi");
         printf("%d ",C[i]);
     }
 
