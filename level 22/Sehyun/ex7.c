@@ -18,7 +18,7 @@ int main(){
     }
 
 
-    long long max = A[0], min = A[0];
+    long long max = A[0], min = A[0], min2 = A[0], max2 = A[0];
     for (int i = 1; i < n; i++)
     {
         if (i<=B[0])
@@ -36,6 +36,24 @@ int main(){
         else
         {
             max = max * A[i];
+        }
+
+
+        if (i<=B[0])
+        {
+            max2 = max2 + A[i];
+        }
+        else if (i<=B[2]+B[0])
+        {
+            max2 = max2 * A[i];
+        }
+        else if (i<=B[1]+B[2]+B[0])
+        {
+            max2 = max2 - A[i];
+        }
+        else
+        {
+            max2 = max2 / A[i];
         }
         
 
@@ -55,11 +73,34 @@ int main(){
         {
             min = min * A[i];
         }
+        
+
+        if (i<=B[1])
+        {
+            min2 = min2 - A[i];
+        }
+        else if (i<=B[2]+B[1])
+        {
+            min2 = min2 * A[i];
+        }
+        else if (i<=B[0]+B[2]+B[1])
+        {
+            min2 = min2 + A[i];
+        }
+        else
+        {
+            min2 = min2 / A[i];
+        }
     }
 
+    if(max>min2){
+        max = min2;
+    }
+    
+    if(min<max2){
+        min = max2;
+    }
     printf("%lld\n%lld",min, max);
     
-
-    //backtracking3(n,m,0,A);
     return 0;
 }
